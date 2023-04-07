@@ -1,0 +1,45 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">STT</th>
+      <th scope="col">ISBN</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Publisher</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Jean 2 light</td>
+      <td>20000</td>
+      <td>10</td>
+      <td>Jean</td>
+      <td>18000</td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+  const list = `{{getList}}`.split('#');
+  let listDetail = [];
+  let content = '';
+
+  for (let i = 0; i < list.length - 1; i++) {
+    let listTmp = list[i].split('^');
+    let data = {
+      _id: listTmp[0],
+      isbn: listTmp[1],
+      title: listTmp[2],
+      author: listTmp[3],
+      publisher: listTmp[4],
+    }
+    listDetail.push(data);
+    console.log(listDetail);
+
+    content += `<tr><th scope="row">${i + 1}</th><td>${listTmp[1]}</td><td>${listTmp[2]}</td><td>${listTmp[3]}</td><td>${listTmp[4]}</td>`;
+  }
+
+  document.querySelector('tbody').innerHTML = content;
+
+</script>
