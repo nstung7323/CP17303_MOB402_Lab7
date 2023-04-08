@@ -1,3 +1,18 @@
+<div class="d-flex justify-content-center my-4">
+  <a 
+  href="http://localhost:3000/api/list/add" 
+  class="btn btn-primary btn-block rounded-pill" 
+  style="width: 90%;"
+  {{#if token}} 
+   onclick="event.preventDefault(); window.location.href='http://localhost:3000/api/list/add'; 
+            fetch('/api/list', { headers: { 'Authorization': '{{token}}' } });"
+   {{else}} 
+   onclick="event.preventDefault(); window.location.href='http://localhost:3000/api/login';"
+   {{/if}}>
+   Add Book
+   </a>
+</div>
+
 <table class="table">
   <thead>
     <tr>
@@ -8,38 +23,17 @@
       <th scope="col">Publisher</th>
     </tr>
   </thead>
+
   <tbody>
+    {{#each books}}
     <tr>
-      <th scope="row">1</th>
-      <td>Jean 2 light</td>
-      <td>20000</td>
-      <td>10</td>
-      <td>Jean</td>
-      <td>18000</td>
+      <td class="align-middle">{{inc @index}}</td>
+      <td class="align-middle">{{this.isbn}}</td>
+      <td class="align-middle">{{this.title}}</td>
+      <td class="align-middle">{{this.author}}</td>
+      <td class="align-middle">{{this.publisher}}</td>
     </tr>
+    {{/each}}
   </tbody>
+
 </table>
-
-<script>
-  const list = `{{getList}}`.split('#');
-  let listDetail = [];
-  let content = '';
-
-  for (let i = 0; i < list.length - 1; i++) {
-    let listTmp = list[i].split('^');
-    let data = {
-      _id: listTmp[0],
-      isbn: listTmp[1],
-      title: listTmp[2],
-      author: listTmp[3],
-      publisher: listTmp[4],
-    }
-    listDetail.push(data);
-    console.log(listDetail);
-
-    content += `<tr><th scope="row">${i + 1}</th><td>${listTmp[1]}</td><td>${listTmp[2]}</td><td>${listTmp[3]}</td><td>${listTmp[4]}</td>`;
-  }
-
-  document.querySelector('tbody').innerHTML = content;
-
-</script>

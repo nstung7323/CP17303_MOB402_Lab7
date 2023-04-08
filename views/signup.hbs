@@ -4,21 +4,9 @@
             <h2 class="text-center pt-3">SignUp Now</h2>
             <p class="text-center text-muted lead mb-3">It's Free and Takes a Minute</p>
             {{!-- Form start --}}
-            <form method="post" action="http://localhost:3000/api/login" class="form-signin needs-validation"
+            <form method="post" action="http://localhost:3000/api/signup" class="form-signin needs-validation"
                 oninput="confirmPassword.setCustomValidity(password.value !== confirmPassword.value ? 'Password do not match' : '')"
                 novalidate>
-                {{!-- <div class="input-group mb-3">
-                    <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
-                    <input name="firstName" type="text" class="form-control" placeholder="First Name" required>
-                    <div class="valid-feedback">That look great!</div>
-                    <div class="invalid-feedback">Please enter your first name</div>
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
-                    <input name="lastName" type="text" class="form-control" placeholder="Last Name" required>
-                    <div class="valid-feedback">That look great!</div>
-                    <div class="invalid-feedback">Please enter your last name</div>
-                </div> --}}
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
                     <input name="username" type="email" class="form-control" placeholder="Email" required>
@@ -39,7 +27,13 @@
                     <div class="valid-feedback">That look great!</div>
                     <div class="invalid-feedback">Please confirm your password</div>
                 </div>
-                <div class="d-grid">
+
+                {{! Notify }}
+                <div class="row">
+                    <code>{{notify}}</code>
+                </div>
+
+                <div class="d-grid pt-3">
                     <button type="submit" class="btn btn-success">SignUp Now</button>
                     <p class="text-center text-muted mt-2">Already Have an account? <a
                             href="http://localhost:3000/api/login"> Login Here </a></p>
@@ -50,15 +44,6 @@
 </div>
 
 <script>
-    {{!-- $("password, confirmPassword").on("keyup", function () {
-        if (
-            $("#password").val() !== "" &&
-            $("#confirmPassword").val() !== "" &&
-            $("#password").val() === $("#confirmPassword").val()
-        ) {
-        }
-    }); --}}
-
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
         'use strict'

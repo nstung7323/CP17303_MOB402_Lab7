@@ -3,7 +3,7 @@
         <div class="col-lg-4 bg-white m-auto rounded-top wrapper">
             <h2 class="text-center pt-3">Add Book</h2>
             {{!-- Form start --}}
-            <form method="post" action="http://localhost:3000/api/home" class="form-signin needs-validation pt-3"
+            <form method="post" action="http://localhost:3000/api/list" class="form-signin needs-validation pt-3"
                 oninput="confirmPassword.setCustomValidity(password.value !== confirmPassword.value ? 'Password do not match' : '')"
                 novalidate>
                 <div class="input-group mb-3">
@@ -30,12 +30,6 @@
                     <div class="valid-feedback">That look great!</div>
                     <div class="invalid-feedback">Please enter your Pulisher Book</div>
                 </div>
-                {{!-- <div class="input-group mb-3">
-                    <span class="input-group-text"><i class="bi bi-lightning"></i></span>
-                    <input name="deal" type="number" class="form-control" placeholder="Deal Product" required>
-                    <div class="valid-feedback">That look great!</div>
-                    <div class="invalid-feedback">Please confirm your Deal Product</div>
-                </div> --}}
                 <div class="d-grid">
                     <button type="submit" class="btn btn-success">Add Now</button>
                 </div>
